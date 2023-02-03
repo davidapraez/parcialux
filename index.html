@@ -16,43 +16,41 @@
         <div class="primera_parteform1">
             <div class="elementos">
                 <label>Nombre del equipo A</label>
-                <input type="number" id="txtcod" required>
+                <input type="text" id="equipoA" required>
             </div>
             <div class="elementos">
                 <label>Nombre del equipo B</label>
-                <input type="text" id="txtnom" required>
+                <input type="text" id="equipoB" required>
             </div>
             <div class="elementos">
                 <label>Nombre del equipo C</label>
-                <input type="number" id="txtkw" required min="0" max="2000">
+                <input type="text" id="equipoC" required min="0" max="2000">
             </div>
 
         </div>
         <div class="segunda_parteform2">
-            <input type="button" class="btn btn-danger" value="Actualizar listas" id="btn1">
+            <input type="button" class="btn btn-danger" value="Actualizar listas" id="btnActualizarEquipos" onclick="crearTriangular()">
         </div>
         <hr>
         <h2>Registrar Partido</h2>
         <div class="segunda_parteform">
             <div class="equipo_local">
                 <label>Equipo Local</label>
-                <select id="lstest" class="form-select">
-                <option>Equipo 1</option>
+                <select id="local" class="form-select">
             </select>
                 <label>Equipo Visitante</label>
-                <select id="lstest" class="form-select">
-                <option>Equipo 1</option>
+                <select id="visitante" class="form-select">
             </select>
             </div>
             <div class="equipo_visitante">
                 <label>Goles Local</label>
-                <input type="number" id="txtcod" required>
+                <input type="number" id="golesLocal" required>
                 <label>Goles Visitante</label>
-                <input type="number" id="txtcod" required>
+                <input type="number" id="golesVisitante" required>
             </div>
         </div>
         <div class="segunda_parteform2">
-            <input type="button" class="btn btn-danger" value="Actualizar listas" id="btn1">
+            <input type="button" class="btn btn-danger" value="Jugar" id="jugar" onclick="jugarPartido()" >
         </div>
         <hr>
         <h2>Tabla de resultados</h2>
@@ -61,6 +59,6 @@
         </div>
 
     </form>
+    <script src="/js/index.js"></script>
 </body>
-
 </html>
