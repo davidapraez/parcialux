@@ -13,6 +13,16 @@ h1 {
     color: aliceblue;
 }
 
+.img-nino {
+    max-width: 200px;
+    text-align: center;
+    align-items: center;
+}
+
+.div-img {
+    display: flex
+}
+
 .primera_parteform1 {
     display: grid;
     grid-template-columns: repeat(1, 1fr);

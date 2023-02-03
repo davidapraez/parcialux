@@ -1,65 +1,70 @@
-class Triangular{
-    constructor(equipoA, equipoB, equipoC){
+class Triangular {
+    constructor(equipoA, equipoB, equipoC) {
         this.equipoA = equipoA;
         this.equipoB = equipoB;
         this.equipoC = equipoC;
         this.partidos = []
     }
 
-    jugar(equipoA, equipoB, golesA, golesB){
+    jugar(equipoA, equipoB, golesA, golesB) {
         const partido = new Partido(equipoA, equipoB, golesA, golesB);
         this.partidos.push(partido)
     }
 
-    obtenerPartidosJugados(equipo){
+    obtenerPartidosJugados(equipo) {
         let number = 0;
         this.partidos.forEach(partido => {
-            if (partido.equipoA == equipo || this.equipoB == equipo){
-                number ++;
+            if (partido.equipoA == equipo || this.equipoB == equipo) {
+                number++;
             }
         });
         return number;
     }
 
-    obtenerPartidosGanados(equipo){
+    obtenerPartidosGanados(equipo) {
         let number = 0;
         this.partidos.forEach(partido => {
-            if (partido.equipoA == equipo && partido.golesA > partido.golesB){
-                number ++;
-            }else if (partido.equipoB == equipo && partido.golesB > partido.golesA){
-                number ++;
-            } 
+            if (partido.equipoA == equipo && partido.golesA > partido.golesB) {
+                number++;
+            } else if (partido.equipoB == equipo && partido.golesB > partido.golesA) {
+                number++;
+            }
         });
         return number;
     }
 
-    obtenerPartidosEmpatados(equipo){
+    obtenerPartidosEmpatados(equipo) {
         let number = 0;
         this.partidos.forEach(partido => {
-            if (partido.equipoA == equipo && partido.golesA == partido.golesB){
-                number ++;
-            }else if (partido.equipoB == equipo && partido.golesB == partido.golesA){
-                number ++;
-            } 
+            if (partido.equipoA == equipo && partido.golesA == partido.golesB) {
+                number++;
+            } else if (partido.equipoB == equipo && partido.golesB == partido.golesA) {
+                number++;
+            }
         });
         return number;
     }
 
-    obtenerPartidosPerdidos(equipo){
+    obtenerPartidosPerdidos(equipo) {
         let number = 0;
         this.partidos.forEach(partido => {
-            if (partido.equipoA == equipo && partido.golesA < partido.golesB){
-                number ++;
-            }else if (partido.equipoB == equipo && partido.golesB < partido.golesA){
-                number ++;
-            } 
+            if (partido.equipoA == equipo && partido.golesA < partido.golesB) {
+                number++;
+            } else if (partido.equipoB == equipo && partido.golesB < partido.golesA) {
+                number++;
+            }
         });
         return number;
     }
 
-    obtenerGolesFavor(equipo){
+    obtenerGolesFavor(equipo) {
         let goles = 0;
         this.partidos.forEach(partido => {
+            if (partido.equipoA == equipo) {
+                number += partido.golesA;
+            } else if (partido.equipoB == equipo) {
+                number += partido.golesB;
+            }
             if (partido.equipoA == equipo){
                 goles += partido.golesA;
             }else if (partido.equipoB == equipo){
@@ -69,20 +74,20 @@ class Triangular{
         return goles;
     }
 
-    obtenerGolesContra(equipo){
+    obtenerGolesContra(equipo) {
         let goles = 0;
         this.partidos.forEach(partido => {
-            if (partido.equipoA == equipo){
-                goles += partido.golesB;
-            }else if (partido.equipoB == equipo){
-                goles += partido.golesA;
-            } 
+            if (partido.equipoA == equipo) {
+                number += partido.golesB;
+            } else if (partido.equipoB == equipo) {
+                number += partido.golesA;
+            }
         });
         return goles;
     }
 
-    obtenerPuntos(equipo){
-        let puntos = this.obtenerPartidosGanados(equipo)*3 + this.obtenerPartidosEmpatados(equipo);
+    obtenerPuntos(equipo) {
+        let puntos = this.obtenerPartidosGanados(equipo) * 3 + this.obtenerPartidosEmpatados(equipo);
         return puntos;
     }
 
@@ -99,7 +104,7 @@ class Triangular{
 }
 
 
-class Partido{
+class Partido {
     constructor(equipoA, equipoB, golesA, golesB) {
         this.equipoA = equipoA;
         this.equipoB = equipoB;
@@ -119,43 +124,38 @@ let golesVisitante = document.getElementById("golesVisitante");
 let tabla = document.getElementById("tablaResultados");
 
 
-function crearTriangular(){
-    if (equipoAEt.value != "" && equipoBEt.value != "" && equipoCEt.value != ""){
-        globalThis.triangularTorneo = new Triangular(equipoAEt.value, equipoBEt.value, equipoCEt.value);
+function crearTriangular() {
+    globalThis.triangularTorneo = new Triangular(equipoAEt.value, equipoBEt.value, equipoCEt.value);
 
-        crearLocal(triangularTorneo.equipoA);
-        crearLocal(triangularTorneo.equipoB);
-        crearLocal(triangularTorneo.equipoC);
-    
-        crearVisitante(triangularTorneo.equipoA);
-        crearVisitante(triangularTorneo.equipoB);
-        crearVisitante(triangularTorneo.equipoC);
-    }else{
-        alert("Digite los nombres");
-    }
-    
+    crearLocal(triangularTorneo.equipoA);
+    crearLocal(triangularTorneo.equipoB);
+    crearLocal(triangularTorneo.equipoC);
+
+    crearVisitante(triangularTorneo.equipoA);
+    crearVisitante(triangularTorneo.equipoB);
+    crearVisitante(triangularTorneo.equipoC);
 }
 
-function jugarPartido(){
+function jugarPartido() {
     const equipoLocal = local.selectedIndex;
     const equipoVisitante = visitante.selectedIndex;
     const opcionSeleccionadaLocal = local.options[equipoLocal];
     const opcionSeleccionadaVisitante = visitante.options[equipoVisitante];
-    if (opcionSeleccionadaLocal.value != opcionSeleccionadaVisitante.value){
+    if (opcionSeleccionadaLocal.value != opcionSeleccionadaVisitante.value) {
         triangularTorneo.jugar(opcionSeleccionadaLocal.value, opcionSeleccionadaVisitante.value, parseInt(golesLocal.value), parseInt(golesVisitante.value));
     }
     console.log(triangularTorneo.partidos)
     actualizarTabla()
 }
 
-function crearLocal(equipo){
+function crearLocal(equipo) {
     const option = document.createElement('option');
     option.value = equipo;
     option.text = equipo;
     local.appendChild(option);
 }
 
-function crearVisitante(equipo){
+function crearVisitante(equipo) {
     const option = document.createElement('option');
     option.value = equipo;
     option.text = equipo;
