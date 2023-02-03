@@ -61,9 +61,9 @@ class Triangular{
         let goles = 0;
         this.partidos.forEach(partido => {
             if (partido.equipoA == equipo){
-                number += partido.golesA;
+                goles += partido.golesA;
             }else if (partido.equipoB == equipo){
-                number += partido.golesB;
+                goles += partido.golesB;
             } 
         });
         return goles;
@@ -73,9 +73,9 @@ class Triangular{
         let goles = 0;
         this.partidos.forEach(partido => {
             if (partido.equipoA == equipo){
-                number += partido.golesB;
+                goles += partido.golesB;
             }else if (partido.equipoB == equipo){
-                number += partido.golesA;
+                goles += partido.golesA;
             } 
         });
         return goles;
@@ -84,6 +84,17 @@ class Triangular{
     obtenerPuntos(equipo){
         let puntos = this.obtenerPartidosGanados(equipo)*3 + this.obtenerPartidosEmpatados(equipo);
         return puntos;
+    }
+
+    obtenerPuntosTotal(){
+        let nombre1 = this.equipoA;
+        let nombre2 = this.equipoB;
+        let nombre3 = this.equipoC;
+        return {nombre : this.obtenerPuntos(this.equipoA), nombre2: this.obtenerPuntos(this.equipoB), nombre3: this.obtenerPuntos(this.equipoC)}
+    }
+
+    obtenerNombres(){
+        return [this.equipoA, this.equipoB, this.equipoC]
     }
 }
 
@@ -105,18 +116,24 @@ let equipoBEt = document.getElementById("equipoB");
 let equipoCEt = document.getElementById("equipoC");
 let golesLocal = document.getElementById("golesLocal");
 let golesVisitante = document.getElementById("golesVisitante");
+let tabla = document.getElementById("tablaResultados");
 
 
 function crearTriangular(){
-    globalThis.triangularTorneo = new Triangular(equipoAEt.value, equipoBEt.value, equipoCEt.value);
+    if (equipoAEt.value != "" && equipoBEt.value != "" && equipoCEt.value != ""){
+        globalThis.triangularTorneo = new Triangular(equipoAEt.value, equipoBEt.value, equipoCEt.value);
 
-    crearLocal(triangularTorneo.equipoA);
-    crearLocal(triangularTorneo.equipoB);
-    crearLocal(triangularTorneo.equipoC);
-   
-    crearVisitante(triangularTorneo.equipoA);
-    crearVisitante(triangularTorneo.equipoB);
-    crearVisitante(triangularTorneo.equipoC);
+        crearLocal(triangularTorneo.equipoA);
+        crearLocal(triangularTorneo.equipoB);
+        crearLocal(triangularTorneo.equipoC);
+    
+        crearVisitante(triangularTorneo.equipoA);
+        crearVisitante(triangularTorneo.equipoB);
+        crearVisitante(triangularTorneo.equipoC);
+    }else{
+        alert("Digite los nombres");
+    }
+    
 }
 
 function jugarPartido(){
@@ -128,6 +145,7 @@ function jugarPartido(){
         triangularTorneo.jugar(opcionSeleccionadaLocal.value, opcionSeleccionadaVisitante.value, parseInt(golesLocal.value), parseInt(golesVisitante.value));
     }
     console.log(triangularTorneo.partidos)
+    actualizarTabla()
 }
 
 function crearLocal(equipo){
@@ -144,6 +162,49 @@ function crearVisitante(equipo){
     visitante.appendChild(option);
 }
 
+function actualizarTabla(){
+    let contador = 0
+    triangularTorneo.obtenerNombres().forEach(element => {
 
+        let fila = document.createElement("tr");
+        let equipo = document.createElement("td");
+        let columnaNombre = document.createElement("td");
+        let columnaPJ = document.createElement("td");
+        let columnaPG = document.createElement("td");
+        let columnaPP = document.createElement("td");
+        let columnaPE = document.createElement("td");
+        let columnaGF = document.createElement("td");
+        let columnaGC = document.createElement("td");
+        let columnaPuntos = document.createElement("td");
+        if (contador == 0){
+            equipo.innerHTML = "EquipoA"
+        }else if (contador == 1){
+            equipo.innerHTML = "EquipoB"
+        }else{
+            equipo.innerHTML = "EquipoC"
+        }
+        columnaNombre.innerHTML = element
+        columnaPJ.innerHTML = triangularTorneo.obtenerPartidosJugados(element);
+        columnaPG.innerHTML = triangularTorneo.obtenerPartidosGanados(element);
+        columnaPP.innerHTML = triangularTorneo.obtenerPartidosPerdidos(element);
+        columnaPE.innerHTML = triangularTorneo.obtenerPartidosEmpatados(element);
+        columnaGF.innerHTML = triangularTorneo.obtenerGolesFavor(element);
+        columnaGC.innerHTML = triangularTorneo.obtenerGolesContra(element);
+        columnaPuntos.innerHTML = triangularTorneo.obtenerPuntos(element);
 
+        fila.appendChild(equipo);
+        fila.appendChild(columnaNombre);
+        fila.appendChild(columnaPJ);
+        fila.appendChild(columnaPG);
+        fila.appendChild(columnaPP);
+        fila.appendChild(columnaPE);
+        fila.appendChild(columnaGF);
+        fila.appendChild(columnaGC);
+        fila.appendChild(columnaPuntos);
 
+        tabla.appendChild(fila);
+
+        contador ++;
+        
+    });
+} 
