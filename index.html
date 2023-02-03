@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcial de Ux</title>
+</head>
+
+<body>
+    <form id="form1">
+        <label class="form-label">Codigo de usuario</label>
+        <input type="number" class="form-control" id="txtcod" required>
+        <label class="form-label">Nombre de usuario</label>
+        <input type="text" class="form-control" id="txtnom" required>
+        <label class="form-label">Kw Consumidos</label>
+        <input type="number" class="form-control" id="txtkw" required min="0" max="2000">
+        <label class="form-label">Estrato</label>
+        <select id="lstest" class="form-select">
+                            <option>0</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                        </select>
+        <hr>
+        <input type="submit" class="btn btn-primary" value="Agregar">
+        <input type="reset" class="btn btn-secondary" value="Limpiar">
+        <input type="button" class="btn btn-danger" value="Ver Desarrollador" id="btn1">
+    </form>
+</body>
+
+</html>
