@@ -16,15 +16,15 @@
         <div class="primera_parteform1">
             <div class="elementos">
                 <label>Nombre del equipo A</label>
-                <input type="text" id="equipoA" required>
+                <input class="btn-inicio" type="text" id="equipoA" required>
             </div>
             <div class="elementos">
                 <label>Nombre del equipo B</label>
-                <input type="text" id="equipoB" required>
+                <input class="btn-inicio" type="text" id="equipoB" required>
             </div>
             <div class="elementos">
                 <label>Nombre del equipo C</label>
-                <input type="text" id="equipoC" required min="0" max="2000">
+                <input class="btn-inicio" type="text" id="equipoC" required min="0" max="2000">
             </div>
 
         </div>
@@ -38,7 +38,7 @@
                 <label>Equipo Local</label>
                 <select id="local" class="form-select">
             </select>
-                <label>Equipo Visitante</label>
+                <label class="lbl-equipovisitante">Equipo Visitante</label>
                 <select id="visitante" class="form-select">
             </select>
             </div>
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="segunda_parteform2">
-            <input type="button" class="btn btn-danger" value="Jugar" id="jugar" onclick="jugarPartido()">
+            <input type="button" class="btn-actualizar" value="Jugar" id="jugar" onclick="jugarPartido()">
         </div>
         <hr>
         <h2>Tabla de resultados</h2>
