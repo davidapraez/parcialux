@@ -1,9 +1,16 @@
 h2 {
     text-align: center;
+    color: rgb(49, 100, 240);
 }
 
 h1 {
     text-align: center;
+    font-weight: bold;
+}
+
+.titulo {
+    background-color: aquamarine;
+    color: aliceblue;
 }
 
 .primera_parteform1 {
@@ -11,4 +18,77 @@ h1 {
     grid-template-columns: repeat(1, 1fr);
     align-items: center;
     justify-content: center;
+}
+
+.elementos {
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    display: inline-block;
+}
+
+.segunda_parteform2 {
+    padding: 10px;
+    margin: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-inicio {
+    margin-left: 35px;
+}
+
+.btn-actualizar {
+    border-radius: 96px 96px 96px 96px;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    background-color: rgba(207, 197, 197, 0.959);
+}
+
+.segunda_parteform {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.equipo_local {
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.equipo_local {
+    padding-left: 20px;
+}
+
+.equipo_visitante {
+    padding-left: 20px;
+}
+
+.lbl-equipovisitante {
+    margin-left: 100px;
+}
+
+.lbl-golesvisitante {
+    margin-left: 30px;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid rgb(0, 0, 0);
+    font-size: 20px;
+}
+
+td {
+    padding: 20px;
+    border: black 1px solid;
 }

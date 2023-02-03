@@ -11,25 +11,25 @@
 
 <body>
     <form id="form1">
-        <h1>UDENAR-2022</h1>
+        <h1 class="titulo">UDENAR-2022</h1>
         <h2>Triangular de FOOTBALL</h2>
         <div class="primera_parteform1">
             <div class="elementos">
                 <label>Nombre del equipo A</label>
-                <input type="number" id="txtcod" required>
+                <input class="btn-inicio" type="text" id="txtcod" required>
             </div>
             <div class="elementos">
                 <label>Nombre del equipo B</label>
-                <input type="text" id="txtnom" required>
+                <input class="btn-inicio" type="text" id="txtnom" required>
             </div>
             <div class="elementos">
                 <label>Nombre del equipo C</label>
-                <input type="number" id="txtkw" required min="0" max="2000">
+                <input class="btn-inicio" type="text" id="txtkw" required min="0" max="2000">
             </div>
 
         </div>
         <div class="segunda_parteform2">
-            <input type="button" class="btn btn-danger" value="Actualizar listas" id="btn1">
+            <input type="button" class="btn-actualizar" value="Actualizar listas" id="btn1">
         </div>
         <hr>
         <h2>Registrar Partido</h2>
@@ -39,25 +39,76 @@
                 <select id="lstest" class="form-select">
                 <option>Equipo 1</option>
             </select>
-                <label>Equipo Visitante</label>
+                <label class="lbl-equipovisitante">Equipo Visitante</label>
                 <select id="lstest" class="form-select">
-                <option>Equipo 1</option>
+                <option id="equipo">Equipo 1</option>
+                <option id="equipo">Equipo 1</option>
             </select>
             </div>
             <div class="equipo_visitante">
                 <label>Goles Local</label>
                 <input type="number" id="txtcod" required>
-                <label>Goles Visitante</label>
+                <label class="lbl-golesvisitante">Goles Visitante</label>
                 <input type="number" id="txtcod" required>
             </div>
         </div>
         <div class="segunda_parteform2">
-            <input type="button" class="btn btn-danger" value="Actualizar listas" id="btn1">
+            <input type="button" class="btn-actualizar" value="Jugar" id="btn1">
         </div>
         <hr>
         <h2>Tabla de resultados</h2>
         <div id="tabla_resultados">
+            <table>
+                <thead>
+                    <tr>
+                        <td><strong>Equipo</strong></td>
+                        <td><strong>Nombre</strong></td>
+                        <td><strong>PJ</strong></td>
+                        <td><strong>PG</strong></td>
+                        <td><strong>PP</strong></td>
+                        <td><strong>PE</strong></td>
+                        <td><strong>GF</strong></td>
+                        <td><strong>GC</strong></td>
+                        <td><strong>Puntos</strong></td>
+                    </tr>
+                </thead>
+                <tbody id="tablaProductos">
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
 
+                </tbody>
+            </table>
         </div>
 
     </form>
